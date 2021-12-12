@@ -6,4 +6,9 @@ class Pages
     {
         echo 'Pages controller loaded';
     }
+
+    public function index()
+    {
+        // Index Page
+    }
 }
