@@ -15,9 +15,9 @@ class User {
         $this->db->bind(':email', $email);
 
         // Check if row exist
-        $this->db->result();
+        $emailFound = $this->db->result();
 
-        if ($this->db->rowCount > 0) {
+        if ($emailFound) {
             return true;
         } else {
             return false;
