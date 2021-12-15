@@ -39,4 +39,20 @@ class User {
             return false;
         }
     }
+
+    // Login user
+    public function login($email, $password)
+    {
+        $this->db->query('SELECT * FROM users WHERE email = :email');
+        $this->db->bind(':email', $email);
+
+        $result = $this->db->result();
+        $hashed_pw = $result->password;
+
+        if (password_verify($password, $hashed_pw)) {
+            return $result;
+        } else {
+            return false;
+        }
+    }
 }
