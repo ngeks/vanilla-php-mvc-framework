@@ -62,7 +62,7 @@ class Users extends Controller
 
                 // Register User
                 if ($this->userModel->register($data)) {
-                    header('location: ' . URLROOT . '/users/login');
+                    redirect('users/login');
                 } else {
                     die('Something went wrong');
                 }
