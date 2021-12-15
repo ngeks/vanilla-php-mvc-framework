@@ -10,8 +10,8 @@ class Pages extends Controller
     public function index()
     {
         $data = [
-            'title' => 'Welcome to PHP MVC Framework',
-            'description' => 'A simple MVC Framework created with vanilla PHP following object-oriented programming.'
+            'title' => 'Vanilla PHP MVC Framework',
+            'description' => 'A simple CRUD application created with vanilla PHP following MVC model and object-oriented programming.',
         ];
 
         $this->view('pages/index', $data);
@@ -21,7 +21,9 @@ class Pages extends Controller
     {
         $data = [
             'title' => 'About Us',
-            'description' => 'A basic CRUD PHP application.'
+            'email' => 'ngeksdev@gmail.com',
+            'github' => 'https://github.com/ngeks/vanilla-php-mvc-framework',
+            'version' => '1.0'
         ];
 
         $this->view('pages/about', $data);
