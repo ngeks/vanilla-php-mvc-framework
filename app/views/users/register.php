@@ -4,7 +4,7 @@
       <div class="card card-body bg-light mt-5">
         <h2>Create An Account</h2>
         <p>Please fill out this form to register with us.</p>
-        <form action="<?php echo URLROOT; ?>/users/register">
+        <form action="<?php echo URLROOT; ?>/users/register" method="post">
           <div class="form-group">
             <label for="name">Name: <sup>*</sup></label>
             <input type="text" name="name" class="form-control form-control-lg <?php echo (!empty($data['name_error'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['name']; ?>">
@@ -16,13 +16,13 @@
             <span class="invalid-feedback"><?php echo $data['email_error']; ?></span>
           </div>
           <div class="form-group">
-            <label for="name">Password: <sup>*</sup></label>
+            <label for="password">Password: <sup>*</sup></label>
             <input type="password" name="password" class="form-control form-control-lg <?php echo (!empty($data['password_error'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['password']; ?>">
             <span class="invalid-feedback"><?php echo $data['password_error']; ?></span>
           </div>
           <div class="form-group">
-            <label for="name">Confirm Password: <sup>*</sup></label>
-            <input type="password" name="name" class="form-control form-control-lg <?php echo (!empty($data['confirm_password_error'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['confirm_password']; ?>">
+            <label for="confirm password">Confirm Password: <sup>*</sup></label>
+            <input type="password" name="confirm_password" class="form-control form-control-lg <?php echo (!empty($data['confirm_password_error'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['confirm_password']; ?>">
             <span class="invalid-feedback"><?php echo $data['confirm_password_error']; ?></span>
           </div>
           <div class="row mt-3">
