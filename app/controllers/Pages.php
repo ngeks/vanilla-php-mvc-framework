@@ -9,6 +9,10 @@ class Pages extends Controller
 
     public function index()
     {
+        if (isLoggedIn()) {
+            redirect('posts');
+        }
+        
         $data = [
             'title' => 'Vanilla PHP MVC Framework',
             'description' => 'A simple CRUD application created with vanilla PHP following MVC model and object-oriented programming.',
