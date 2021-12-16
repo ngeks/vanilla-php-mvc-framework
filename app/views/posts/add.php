@@ -13,10 +13,10 @@
     </div>
     <div class="form-group">
       <label for="body">Body: <sup>*</sup></label>
-      <textarea type="textarea" name="body" class="form-control form-control-lg mb-2<?php echo (!empty($data['body_error'])) ? 'is-invalid' : ''; ?>"><?php echo $data['body']; ?></textarea>
+      <textarea type="textarea" name="body" class="form-control form-control-lg <?php echo (!empty($data['body_error'])) ? 'is-invalid' : ''; ?>"><?php echo $data['body']; ?></textarea>
       <span class="invalid-feedback"><?php echo $data['body_error']; ?></span>
     </div>
-    <input type="submit" class="btn btn-success" value="Submit">
+    <input type="submit" class="btn btn-success mt-3" value="Submit">
   </form>
 </div>
 <?php require APPROOT . '/views/includes/footer.php'; ?>
