@@ -51,7 +51,7 @@ class Posts extends Controller
             // Proceed if there are no errors
             if (empty($data['title_error']) && empty($data['body_error'])) {
                 if ($this->postModel->addPost($data)) {
-                    flash('post_added', 'Post has been added.');
+                    flash('post_message', 'Post has been added.');
                     redirect('posts');
                 } else {
                     die('Something went wrong');
@@ -68,6 +68,62 @@ class Posts extends Controller
             
             // Load view with empty data
             $this->view('posts/add', $data);
+        }
+    }
+
+    public function edit($id)
+    {
+        // Check for POST request
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // Sanitize POST array
+            $_POST = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
+
+            $data = [
+                'id' => $id,
+                'title' => trim($_POST['title']),
+                'body' => trim($_POST['body']),
+                'user_id' => $_SESSION['user_id'],
+                'title_error' => '',
+                'body_error' => ''
+            ];
+            // Validate title
+            if (empty($data['title'])) {
+                $data['title_error'] = 'Please enter title';
+            }
+
+            // Validate body
+            if (empty($data['body'])) {
+                $data['body_error'] = 'Please enter body text';
+            }
+
+            // Proceed if there are no errors
+            if (empty($data['title_error']) && empty($data['body_error'])) {
+                if ($this->postModel->updatePost($data)) {
+                    flash('post_message', 'Post has been updated.');
+                    redirect('posts');
+                } else {
+                    die('Something went wrong');
+                }
+            } else {
+                // Load view with errors
+                $this->view('posts/edit', $data);
+            }
+        } else {
+            // Get post
+            $post = $this->postModel->getPostById($id);
+            // Check for post author
+            if ($post->user_id != $_SESSION['user_id']) {
+                redirect('posts');
+            }
+
+            $data = [
+                'id' => $id,
+                'title' => $post->title,
+                'body' => $post->body,
+            ];
+            
+            // Load view with empty data
+            $this->view('posts/edit', $data);
         }
     }
 
